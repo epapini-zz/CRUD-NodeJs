@@ -5,35 +5,48 @@ class UserController {
     this.users = [];
   }
 
-  /*
   randIdUser(min = 1, max = 100) {
     return parseInt(Math.random() * (max - min) + min);
   }
-*/
 
+  randCode(min = 1, max = 200) {
+    return parseInt(Math.random() * (max - min) + min);
+  }
+
+  /*
   randIdUser() {
     let randomNUm = parseInt(Math.random() * 100000);
     return randomNUm;
   }
-
-  getUserId(request, response) {
-    const usuarioId = request.params;
-  }
+*/
 
   //post
   createUser(request, response) {
     const { name, code } = request.body;
-    const user = new User(name, code, this.randIdUser());
+    const user = new User(name, this.randCode(), this.randIdUser());
     this.users.push(user);
     response.send(user);
   }
 
-  listarUser(request, response) {
-    const { name } = request.query;
-    const showList = this.users.filter((obj) => obj.name == name);
-    response.send(showList);
+  listarUserAll(request, response) {
+    const showList = this.users.map((obj) => obj);
+    response.json(showList);
   }
 
+  //listar por parametros
+  listarUserNome(request, response) {
+    const { name } = request.params;
+    const showList = this.users.filter((obj) => obj.name == name);
+    response.json(showList);
+  }
+
+  listarUserId(request, response) {
+    const { id } = request.params;
+    const showList = this.users.find((obj) => obj.id == id);
+    response.json(showList);
+  }
+
+  //PUT - atualizar
   UpdateUser(request, response) {
     const { id } = request.params;
     const { name } = request.body;
@@ -44,6 +57,7 @@ class UserController {
     response.send(findUpdate);
   }
 
+  //delete - remover
   RemoveUser(request, response) {
     const { id } = request.params;
 

@@ -12,6 +12,7 @@ class App {
 
   middlewares() {
     this.express.use(express.json());
+    console.log("sou um mid - em server.js");
   }
 
   routes() {

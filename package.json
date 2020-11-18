@@ -1,5 +1,5 @@
 {
-  "name": "crudLucas",
+  "name": "CRUDcomClasses",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -12,5 +12,7 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1"
-  }
+  },
+  "repository": "https://github.com/epapini/CRUD-usando-Classes-NodeJS-",
+  "author": "Emilio Papini <emilio_papini@hotmail.com>"
 }
